@@ -1,4 +1,4 @@
-%h1 Edit Movie
+%h2 Edit Movie
 	
 = form_tag movie_path(@movie), :method => :put do
 

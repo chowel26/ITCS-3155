@@ -1,5 +1,8 @@
 -# in app/views/movies/show.html.haml
 
+%h1= @movie.title
+-# will give "undefined method 'title' for nil:NilClass" if @movie is nil
+
 %h2 Details about #{@movie.title}
 
 %ul#details
@@ -14,5 +17,5 @@
 
 %p#description= @movie.description
 
-= link_to 'Edit info', edit_movie_path(@movie)
 = link_to 'Back to movie list', movies_path
+= link_to 'Delete', movie_path(@movie), :method => :delete
