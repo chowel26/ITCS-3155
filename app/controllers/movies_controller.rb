@@ -8,12 +8,10 @@ class MoviesController < ApplicationController
 		id = params[:id] # retrieve movie ID from URI route
 		@movie = Movie.find(id) # look up movie by unique ID
 		# will render app/view/movies/show.html.haml by default
-		@movie = Movie.find_by_id(params[:id]) # what if this movie not in DB?
-  		# BUG: we should check @movie for validity here!
 	end
 	
 	def new
-		# default: render new template
+		# default: render 'new' template
 	end
 	
 	def create
@@ -24,19 +22,19 @@ class MoviesController < ApplicationController
 
 	def edit
 		@movie = Movie.find params[:id]
-	end
+	end 
 
 	def update
 		@movie = Movie.find params[:id]
 		@movie.update_attributes!(params[:movie])
 		flash[:notice] = "#{@movie.title} was successfully updated."
 		redirect_to movie_path(@movie)
-	end
+	end 
 
-	def destroy
+	 def destroy
 		@movie = Movie.find(params[:id])
 		@movie.destroy
 		flash[:notice] = "Movie '#{@movie.title}' deleted."
-		redirect_to movies_path
+		redirect_to movies_path 
 	end
 end
